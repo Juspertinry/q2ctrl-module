@@ -1,0 +1,9 @@
+# trackingservice's ControllerGlue refuses to PAIR a ControllerType it does not
+# recognise, logging "Controller <addr> is of unsupported type, ignore." and then
+# timing out silently. That check only bites once entry1's hardware_type is 4,
+# because the Q2 then reports as JEDI rather than LCON. Without this property,
+# correct pose angles and the ability to pair a Q2 are mutually exclusive.
+#
+# Already-bonded controllers keep working without it, which is why this went
+# unnoticed until the module was installed on a headset that had never bonded one.
+persist.ovr.tracking.freepair=1
